@@ -10,6 +10,9 @@ money_machine = MoneyMachine()
 
 is_on = True
 
+
+
+
 while is_on:
 
     options = menu.get_items()
@@ -17,6 +20,9 @@ while is_on:
     if choice == 'report':
         coffee_maker.report()
         money_machine.report()
+    elif choice == 'off':
+        print("Shutting down...")
+        is_on = False
     else:
         drink = menu.find_drink(choice)
         if drink is not None:
