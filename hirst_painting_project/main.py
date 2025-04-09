@@ -27,6 +27,7 @@ def hirst_drawing(num_of_dots = 10,gap = 50 , dot_size = 20):
             random_color = random.choice(colors)
             turtle.dot(dot_size , random_color)
             turtle.forward(gap)
+    turtle.hideturtle()
     Screen().exitonclick()
 
 
