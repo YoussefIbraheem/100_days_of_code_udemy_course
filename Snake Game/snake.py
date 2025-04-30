@@ -42,3 +42,6 @@ class Snake:
     def    right(self):
         if self.__heading.heading() != self.__LEFT:
             self.__heading.setheading(self.__RIGHT)
+
+    def get_heading(self):
+        return self.__heading
