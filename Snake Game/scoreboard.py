@@ -10,7 +10,7 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.color('white')
         self.penup()
-        self.setposition(0,270)
+        self.setposition(0,275)
         self.refresh_board()
 
     def get_score(self):
@@ -26,3 +26,8 @@ class Scoreboard(Turtle):
     def refresh_board(self):
         self.clear()
         self.write(f"Score:{self.__score}", False, self.__ALIGNMENT, (self.__FONT, 18, "bold"))
+
+    def game_over(self):
+        self.clear()
+        self.home()
+        self.write("Game Over", False, self.__ALIGNMENT, (self.__FONT, 24, "bold"))
