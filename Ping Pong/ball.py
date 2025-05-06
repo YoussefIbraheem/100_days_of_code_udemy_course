@@ -1,17 +1,32 @@
+import time
 from turtle import Turtle
 import random
 
 class Ball(Turtle):
 
-    def __init__(self,screen_width , screen_height):
+    def __init__(self):
         super().__init__()
         self.shape('circle')
         self.color('white')
-        self.shapesize(1)
+        self.shapesize(1,1)
         self.speed(1)
-        self.first_bounce(screen_width , screen_height)
+        self.penup()
+        self.move_x = 10
+        self.move_y = 10
+        self.move()
 
-    def first_bounce(self,screen_width , screen_height):
-        x_cor = random.choice([-screen_width,screen_width])
-        y_cor = random.randint(-screen_height,screen_height)
+
+    def bounce_y(self):
+        self.move_y *= -1
+
+    def bounce_x(self):
+        self.move_x *= -1
+
+    def move(self):
+        x_cor = self.xcor() + self.move_x
+        y_cor = self.ycor() + self.move_y
         self.goto(x_cor , y_cor)
+
+    def reset_position(self):
+        self.teleport(0,0)
+        self.bounce_x()
