@@ -14,13 +14,13 @@ class Score(Turtle):
 
     def setup_score(self):
         if self.player_type.lower() == 'player_1':
-            self.teleport(-200, 250)
+            self.teleport(-200, 230)
         elif self.player_type.lower() == 'player_2':
-            self.teleport(200 , 250)
+            self.teleport(200 , 230)
         else:
             raise ValueError("Player can only 'player_1' or 'player_2'")
 
-        self.write(f"{self.player_type}: {self.score}", align="center", font=("Courier", 20, "normal"))
+        self.write(f"{self.score}", align="center", font=("Courier", 50, "normal"))
 
     def add_point(self):
         self.score += 1

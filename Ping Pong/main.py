@@ -1,3 +1,4 @@
+import time
 from turtle import Screen
 from player import Player
 from ball import Ball
@@ -9,10 +10,10 @@ screen.setup(screen_width , screen_height)
 screen.bgcolor('Black')
 player_1_score = Score('player_1')
 player_2_score = Score('player_2')
-player_1 = Player('player_1',screen_width , screen_height)
-player_2 = Player('player_2',screen_width , screen_height)
+player_1 = Player('player_1',screen_width)
+player_2 = Player('player_2',screen_width)
 ball = Ball()
-max_score = 1
+max_score = 10
 game_on = True
 
 while game_on:
@@ -25,7 +26,7 @@ while game_on:
         player_2_score.announce_winner()
         game_on = False
 
-
+    time.sleep(ball.movement_speed)
     ball.move()
 
     if ball.ycor() > 280 or ball.ycor() < -280:

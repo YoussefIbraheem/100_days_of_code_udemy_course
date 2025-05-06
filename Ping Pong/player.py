@@ -4,7 +4,7 @@ class Player(Turtle):
 
 
 
-    def __init__(self,player_type:str,screen_width , screen_height):
+    def __init__(self,player_type:str,screen_width):
         super().__init__()
         self.screen = Screen()
         self.screen.listen()
