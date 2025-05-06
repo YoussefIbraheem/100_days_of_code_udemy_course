@@ -1,7 +1,5 @@
 import time
 from turtle import Turtle
-import random
-
 class Ball(Turtle):
 
     def __init__(self):
@@ -29,4 +27,5 @@ class Ball(Turtle):
 
     def reset_position(self):
         self.teleport(0,0)
+        time.sleep(0.1)
         self.bounce_x()
