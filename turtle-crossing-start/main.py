@@ -13,7 +13,7 @@ player = Player()
 screen.listen()
 screen.onkey(player.move_forward , 'w')
 screen.onkey(player.move_backwards,'s')
-carManager =CarManager('hard')
+carManager =CarManager()
 
 game_is_on = True
 while game_is_on:
