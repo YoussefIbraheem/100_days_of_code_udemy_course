@@ -29,6 +29,7 @@ class CarManager:
         """
         self.cars_list = []
         self.game_difficulty = DIFFICULTY[difficulty]
+        self.cars_speed = STARTING_MOVE_DISTANCE
         self.generate_cars()
 
     def generate_car(self):
@@ -51,7 +52,7 @@ class CarManager:
     def move_cars(self):
         if len(self.cars_list) > 0:
             for car in self.cars_list:
-                car.backward(MOVE_INCREMENT)
+                car.backward(self.cars_speed)
         else:
             raise ValueError("please generate cars first")
 
@@ -72,3 +73,6 @@ class CarManager:
     def reset_difficulty(self,initial_difficulty):
         self.game_difficulty = initial_difficulty
 
+
+    def increase_speed(self):
+        self.cars_speed += MOVE_INCREMENT

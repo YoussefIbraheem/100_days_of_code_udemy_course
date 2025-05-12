@@ -13,7 +13,7 @@ player = Player()
 screen.listen()
 screen.onkey(player.move_forward , 'w')
 screen.onkey(player.move_backwards,'s')
-initial_difficulty = 'easy'
+initial_difficulty = 'medium'
 carManager =CarManager(initial_difficulty)
 scoreboard = Scoreboard()
 game_is_on = True
@@ -25,7 +25,7 @@ while game_is_on:
     carManager.remove_cars()
 
     for car in carManager.cars_list:
-        if car.distance(player) < 25:
+        if car.distance(player) < 20:
             scoreboard.declare_loss()
             game_is_on = False
             screen.exitonclick()
@@ -35,7 +35,7 @@ while game_is_on:
 
     if player.ycor() >= 260:
         scoreboard.increment_level()
-        carManager.increase_difficulty()
+        carManager.increase_speed()
         player.reset()
 
 
