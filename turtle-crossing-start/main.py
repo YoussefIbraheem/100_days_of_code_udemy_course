@@ -13,7 +13,7 @@ player = Player()
 screen.listen()
 screen.onkey(player.move_forward , 'w')
 screen.onkey(player.move_backwards,'s')
-carManager =CarManager()
+carManager =CarManager('hard')
 
 game_is_on = True
 while game_is_on:
@@ -21,8 +21,8 @@ while game_is_on:
     screen.update()
     carManager.move_cars()
     carManager.remove_cars()
-    while len(carManager.cars_list) < 50:
-        carManager.generate_cars(100)
+    if carManager.cars_list[-1].xcor() < 250:
+        carManager.generate_cars()
 
 
 
