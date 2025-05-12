@@ -51,8 +51,7 @@ class CarManager:
     def move_cars(self):
         if len(self.cars_list) > 0:
             for car in self.cars_list:
-                car.setheading(180)
-                car.forward(MOVE_INCREMENT)
+                car.backward(MOVE_INCREMENT)
         else:
             raise ValueError("please generate cars first")
 
