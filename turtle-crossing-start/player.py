@@ -24,3 +24,9 @@ class Player(Turtle):
         if self.heading() != 270:
             self.setheading(270)
         self.goto(self.xcor() , self.ycor() - MOVE_DISTANCE)
+
+
+    def reset(self):
+        if self.heading() != 90:
+            self.setheading(90)
+        self.teleport(*STARTING_POSITION)

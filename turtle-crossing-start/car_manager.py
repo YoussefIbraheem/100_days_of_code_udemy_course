@@ -44,8 +44,8 @@ class CarManager:
         for y_cor in range(-200, 250, self.game_difficulty['y_steps']):
             for x_cor in range(280, 500, self.game_difficulty['x_steps']):
                 new_car = self.generate_car()
-                self.cars_list.append(new_car)
                 new_car.goto(x_cor + random.randint(0, 30), y_cor + random.randint(-10, 10))
+                self.cars_list.append(new_car)
 
 
     def move_cars(self):
@@ -62,4 +62,14 @@ class CarManager:
         for car in self.cars_list:
             if car.xcor() < -320:
                 self.cars_list.remove(car)
+
+
+    def increase_difficulty(self):
+        difficulty_order = ['easy', 'normal', 'medium', 'hard']
+        current_index = difficulty_order.index(next(key for key, value in DIFFICULTY.items() if value == self.game_difficulty))
+        if current_index < len(difficulty_order) - 1:
+            self.game_difficulty = DIFFICULTY[difficulty_order[current_index + 1]]
+
+    def reset_difficulty(self,initial_difficulty):
+        self.game_difficulty = initial_difficulty
 
