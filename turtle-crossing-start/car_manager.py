@@ -29,7 +29,7 @@ class CarManager:
         """
         self.cars_list = []
         self.game_difficulty = DIFFICULTY[difficulty]
-        self.generate_cars(self.game_difficulty['x_steps'], self.game_difficulty['y_steps'])
+        self.generate_cars()
 
     def generate_car(self):
         car = Turtle()
@@ -40,9 +40,9 @@ class CarManager:
         return car
 
 
-    def generate_cars(self,x_steps = 150,y_steps = 100):
-        for y_cor in range(-200, 250, y_steps):
-            for x_cor in range(280, 500, x_steps):
+    def generate_cars(self):
+        for y_cor in range(-200, 250, self.game_difficulty['y_steps']):
+            for x_cor in range(280, 500, self.game_difficulty['x_steps']):
                 new_car = self.generate_car()
                 self.cars_list.append(new_car)
                 new_car.goto(x_cor + random.randint(0, 30), y_cor + random.randint(-10, 10))
