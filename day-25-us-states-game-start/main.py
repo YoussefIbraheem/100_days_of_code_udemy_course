@@ -27,13 +27,19 @@ data["state"] = data["state"].str.lower()
 
 game_on = True
 score = 0
+guessed_states = []
 
-def check_if_state_exists(state_input:str):
+def check_if_state_exists(state_input:str)-> Series or bool or None:
     is_state_exist = data[data["state"] == state_input.lower()]
     if is_state_exist.empty:
-        return None
+        return False
     else:
-        return  is_state_exist
+        if state_input.lower() in guessed_states:
+            print(f"You have already guessed {state_input}.")
+            return None
+        else:
+            print(f"{state_input} is a correct answer.")
+            return is_state_exist
 
 def add_correct_state_to_map(correct_state:Series):
     state_data = correct_state.iloc[0].to_dict()
@@ -41,6 +47,7 @@ def add_correct_state_to_map(correct_state:Series):
     state.penup()
     state.teleport(state_data["x"] , state_data["y"])
     state.write(state_data["state"].upper(), align="center", font=("Courier", 9, "bold"))
+    guessed_states.append(state_data["state"].lower())
 
 
 
@@ -70,10 +77,14 @@ while game_on:
         game_on = False
         screen.bye()
     else:
-        processed_answer = check_if_state_exists(answer)
-        if processed_answer is None:
+        processed_answer = check_if_state_exists(answer.strip())
+        if processed_answer is False:
            announce("loser")
            game_on = False
+
+        elif processed_answer is None:
+            continue
+
         else:
             add_correct_state_to_map(processed_answer)
             score +=1
