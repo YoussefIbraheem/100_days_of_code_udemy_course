@@ -38,18 +38,21 @@ def save_password():
     if not password:
         messagebox.showwarning("Missing Data", "Password is required")
         return
+    try:
+        file_path = Path("./data.txt")
 
-    file_path = Path("./data.txt")
+        file_path.touch(exist_ok=True)
 
-    file_path.touch(exist_ok=True)
-
-    with file_path.open(mode="a", encoding="utf-8") as f:
-        f.write(f"{website} | {eu} | {password}\n")
-        messagebox.showinfo("Success", "Password saved successfully")
-
-    website_input.delete(0, END)
-    password_input.delete(0, END)
-    eu_input.delete(0, END)
+        with file_path.open(mode="a", encoding="utf-8") as f:
+            f.write(f"{website} | {eu} | {password}\n")
+            messagebox.showinfo("Success", "Password saved successfully")
+        
+    except Exception as e:
+        messagebox.showerror("Error", f"An error occurred while saving the password: {e}")
+    finally:
+        website_input.delete(0, END)
+        password_input.delete(0, END)
+        eu_input.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
