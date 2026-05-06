@@ -1,0 +1,6 @@
+hello.com | youssef@mail.com | pass
+bye.com | youssef@mail.com | password
+hello.py | youssef@mail.com | password@123
+Toodle | youssef@mail.com | password
+amazon | youssef@mail.com | 4&1)!)75
+'pos' | 'youssef@mail.com' | '5#2$5##0'
