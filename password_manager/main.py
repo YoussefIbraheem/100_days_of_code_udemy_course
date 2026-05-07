@@ -13,7 +13,7 @@ def search():
             data: dict = json.load(f)
 
     except FileNotFoundError:
-        messagebox.showerror("Not Found", "File does not exist!")
+        messagebox.showerror("Not Found", "Database not initiated")
 
     else:
         located_data = data.get(keyword, None)
