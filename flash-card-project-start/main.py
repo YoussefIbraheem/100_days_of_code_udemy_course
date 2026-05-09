@@ -15,11 +15,12 @@ WR_BTN = Image.open("./images/wrong.png")
 words_to_learn_file_path = Path("./data/words_to_learn.csv")
 current_card = {}
 
-if not words_to_learn_file_path.is_file():
+try:
+    data = pa.read_csv(words_to_learn_file_path)
+except FileNotFoundError:
     shutil.copy("./data/french_words.csv", "./data/words_to_learn.csv")
     data = pa.read_csv("./data/words_to_learn.csv")
-else:
-    data = pa.read_csv(words_to_learn_file_path)
+
 
 words = data.to_dict(orient="records")
 
